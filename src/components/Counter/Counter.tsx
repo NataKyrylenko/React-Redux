@@ -1,15 +1,14 @@
-import Button from "components/Button/Button"
-import { useState } from "react"
-import { CounterProps } from "./types"
+import Button from "components/Button/Button";
+import { useState } from "react";
 import {
   CounterComponent,
   ButtonControl,
   CounterElement,
   ButtonsWrapper,
-} from "./styles"
+} from "./styles";
 
 function Counter() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState<number>(0);
 
   const onMinusClick = () => {
     setCount(prevValue => prevValue - 1)
@@ -21,10 +20,7 @@ function Counter() {
     setCount(prevValue => prevValue * 2)
   }
   const onDivideClick = () => {
-    setCount(prevValue => {
-      const newValue = prevValue / 2
-      return Math.round(newValue * 100) / 100
-    })
+    setCount(prevValue => Number((prevValue / 2).toFixed(2)))
   }
 
   return (
