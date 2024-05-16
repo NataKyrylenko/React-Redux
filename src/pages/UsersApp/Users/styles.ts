@@ -1,5 +1,9 @@
 import styled from "@emotion/styled"
 
+interface isUserDataProps {
+  isUserData: boolean
+}
+
 export const UsersPageWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +20,7 @@ export const UserCard = styled.div`
   padding: 20px;
   border-radius: 8px;
   border: 1px solid black;
+  background-color: #c5dce1;
 `
 
 export const Paragraph = styled.p`
@@ -23,4 +28,8 @@ export const Paragraph = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 16px;
+`
+export const ButtonContainer = styled.div<isUserDataProps>`
+  width: 300px;
+  display: ${({ isUserData }) => (isUserData ? "flex" : "none")};
 `
