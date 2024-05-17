@@ -6,21 +6,22 @@ import Homework17 from "homeworks/Homework17/Homework17"
 import Layout from "pages/UsersApp/Layout/Layout"
 import Home from "pages/UsersApp/Home/Home"
 import Users from "pages/UsersApp/Users/Users"
+import Lesson19 from 'lessons/Lesson19/Lesson19';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      {/* Lesson18 - Layout и его вложенные рауты */}
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="*" element="Page Not Found" />
-        </Routes>
-      </Layout>
+    // <BrowserRouter>
+    //   {/* Lesson18 - Layout и его вложенные рауты */}
+    //   <Layout>
+    //     <Routes>
+    //       <Route path="/" element={<Home />} />
+    //       <Route path="/users" element={<Users />} />
+    //       <Route path="*" element="Page Not Found" />
+    //     </Routes>
+    //   </Layout>
     
     
-    </BrowserRouter>
+    // </BrowserRouter>
 
 
 
@@ -29,7 +30,7 @@ const App = () => {
     //  <Homework16/>
     // <Homework17 />
 
-
+<Lesson19/>
   )
 }
 
