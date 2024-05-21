@@ -4,10 +4,11 @@ import { counterSlice } from "./redux/counter/counterSlice"
 import { feedbackSlice } from "./redux/feedback/feedbackSlice"
 import { usersSlice } from "./redux/users/usersSlice"
 import { randomJokesSlice } from "./redux/randomJokers/randomJokers"
+import { activityRandomizerSlice } from "./redux/activityRandomizer/activityRandimizer"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(counterSlice, feedbackSlice, usersSlice, randomJokesSlice)
+const rootReducer = combineSlices(counterSlice, feedbackSlice, usersSlice, randomJokesSlice, activityRandomizerSlice)
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 

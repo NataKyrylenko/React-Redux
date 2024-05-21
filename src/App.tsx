@@ -1,12 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 //import Homework16 from "homeworks/Homework16/Homework16"
-import Homework17 from "homeworks/Homework17/Homework17"
+//import Homework17 from "homeworks/Homework17/Homework17"
 //import Lesson16 from "lessons/Lesson16"
 
 import Layout from "pages/UsersApp/Layout/Layout"
 import Home from "pages/UsersApp/Home/Home"
 import Users from "pages/UsersApp/Users/Users"
-import Lesson19 from 'lessons/Lesson19/Lesson19';
+import Homework19 from "homeworks/Homework19/Homework19"
+//import Lesson19 from 'lessons/Lesson19/Lesson19';
 
 const App = () => {
   return (
@@ -19,19 +20,15 @@ const App = () => {
     //       <Route path="*" element="Page Not Found" />
     //     </Routes>
     //   </Layout>
-    
-    
+
     // </BrowserRouter>
-
-
-
 
     //  <Lesson16/>
     //  <Homework16/>
     // <Homework17 />
-
-<Lesson19/>
+    //  <Lesson19/>
+    <Homework19 />
   )
 }
 
-export default App
+export default App;
