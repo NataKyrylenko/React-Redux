@@ -12,6 +12,7 @@ import {
   activityRandomizerSliceSelectors,
 } from "store/redux/activityRandomizer/activityRandimizer"
 import Spinner from "components/Spinner/Spinner"
+import { useEffect } from "react"
 
 function ActivityRandomizer() {
   const dispatch = useAppDispatch()
@@ -27,6 +28,12 @@ function ActivityRandomizer() {
   const deleteAllActivity = () => {
     dispatch(activityRandomizerSliceActions.deleteAllActivity())
   }
+
+  useEffect(() => {
+    if(error){
+      alert('Error network')
+    }
+  },[error])
 
   const activitys = data.map(activity => {
     const deleteActivityClick = () => {

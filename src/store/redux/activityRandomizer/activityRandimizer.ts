@@ -1,6 +1,7 @@
 import { createAppSlice } from "store/createAppSlice";
 import { activityRandomizerSliceState } from "./types";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { v4 } from "uuid";
 
 const activityRandomizerInitialState: activityRandomizerSliceState = {
     data: [],
@@ -18,7 +19,7 @@ export const activityRandomizerSlice = createAppSlice({
             console.log(result);
 
             if (!response.ok){
-                thunkApi.rejectWithValue(result)
+               return thunkApi.rejectWithValue(result)
             }else {
                 return result
             }
@@ -30,7 +31,7 @@ export const activityRandomizerSlice = createAppSlice({
             fulfilled: (state: activityRandomizerSliceState, action: any) => {
                 state.status = 'succes'
                 state.data = [...state.data, {
-                    id: action.payload?.id,
+                    id: v4(),
                     activitys: action.payload?.activity,
                     
                 }]
@@ -39,8 +40,7 @@ export const activityRandomizerSlice = createAppSlice({
             rejected: (state: activityRandomizerSliceState, action: any) => {
                 state.status = 'error'
                 state.error = action.payload
-                alert('Network error');
-
+                
             } 
         }),
         deleteAllActivity: create.reducer(() => activityRandomizerInitialState),
