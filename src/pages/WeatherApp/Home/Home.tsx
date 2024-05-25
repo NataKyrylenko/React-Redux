@@ -1,5 +1,6 @@
 import Input from "components/Input/Input"
 import {
+  ButtonsContainer,
   CityName,
   HomeWrapper,
   IconWrapper,
@@ -11,13 +12,15 @@ import {
   WeatherInfoContainer,
   WeatherInfoWrapper,
 } from "./styles"
-import Button from "components/Button/Button"
+
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import {
   weatherSliceActions,
   weatherSliceSelectors,
 } from "store/redux/weather/weather"
 import { WeatherInfoData } from "store/redux/weather/types"
+import ButtonWeather from "components/ButtonWeather/ButtonWeather"
+import { useEffect } from "react"
 
 function Home() {
   const dispatch = useAppDispatch()
@@ -25,20 +28,19 @@ function Home() {
     weatherSliceSelectors.weather,
   )
 
-  const getWeatherData = e => {
+  const getWeatherData = (e:any) => {
     e.preventDefault()
     const city = e.target.elements.city.value
     dispatch(weatherSliceActions.getWeatherData(city))
   }
 
-  const weather = data.map((weatherObj: WeatherInfoData, index) => {
-    // const saveWeather = () => {
-    //   dispatch(weatherSliceActions.saveWeather(weatherObj.id))
-    // }
-    // const deleteWeather = () => {
-    //   dispatch(weatherSliceActions.deleteWeather())
-    // }
+  useEffect(() => {
+    if (error) {
+     return alert('Error response')
+    }
+  }, [error])
 
+  const weather = data.map((weatherObj: WeatherInfoData, index) => {
     return (
       <WeatherInfoWrapper key={weatherObj.id}>
         <WeatherInfoContainer>
@@ -52,16 +54,18 @@ function Home() {
             <WeatherImg src={weatherObj.icon} alt="Weather Icon" />
           </IconWrapper>
         </WeatherInfoContainer>
-        <WeatherButtonWrapper>
-            <Button name="Save" onButtonClick={() => {
+        <ButtonsContainer>
+          <WeatherButtonWrapper>
+            <ButtonWeather name="Save" onButtonClick={() => {
               dispatch(weatherSliceActions.saveWeather(weatherObj))
             }}/>
           </WeatherButtonWrapper>
           <WeatherButtonWrapper>
-            <Button name="Delete" onButtonClick={() => {
+            <ButtonWeather name="Delete" onButtonClick={() => {
               dispatch(weatherSliceActions.deleteWeather(weatherObj.id))
             }}/>
           </WeatherButtonWrapper>
+        </ButtonsContainer>
       </WeatherInfoWrapper>
     )
   })
@@ -72,20 +76,12 @@ function Home() {
         <InputButtonWrapper>
           <Input placeholder="Enter city name" name="city" />
           <WeatherButtonWrapper>
-            <Button name="Search" />
+            <ButtonWeather name="Search" disabled={isLoading}/>
           </WeatherButtonWrapper>
         </InputButtonWrapper>
-        {/* {isLoading && <Spinner />}
-          {!!weatherInfo && (
-            <WeatherInfo
-              temp={weatherInfo?.temp}
-              icon={weatherInfo?.icon}
-              cityName={weatherInfo?.cityName}
-            />)}
-          {!!weatherError && (<WeatherError error={weatherError} />)} */}
         {weather}
       </WeatherForm>
     </HomeWrapper>
   )
 }
-export default Home
+export default Home;

@@ -18,18 +18,18 @@ export const WeatherForm = styled.form`
 
 export const InputButtonWrapper = styled.div`
   display: flex;
-  width: 50%;
+  width: 80%;
   gap: 12px;
 `;
 
 export const WeatherButtonWrapper = styled.div`
-  width: 146px;
+  /* width: 146px; */
 `;
 
 export const WeatherInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+ 
   gap: 20px;
   width: 100%;
   height: fit-content;
@@ -45,7 +45,14 @@ export const WeatherInfoWrapper = styled.div`
 
 export const WeatherInfoContainer = styled.div`
   display: flex;
-  width: 100%;
+  gap: 168px;
+  padding: 27px 36px;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap:90px
 `;
 
 export const TempWrapper = styled.div`
